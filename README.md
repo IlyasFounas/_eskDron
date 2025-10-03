@@ -15,7 +15,7 @@ The main goal of this project is to practice and apply **good design patterns** 
 - Experiment with design patterns suitable for systems programming
 - Evolve step by step into a small database engine
 
-## Build
+## Build / Run
 ```bash
 make
 
