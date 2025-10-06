@@ -15,3 +15,23 @@ void esk_garbage(t_esk_garbage *garb)
         garb = ptr;
     }
 }
+
+void esk_query_garbage(t_esk_q_infos *query)
+{
+    t_esk_q_infos *ptr;
+    if (!query)
+        return ;
+    ptr = query;
+    while (query)
+    {
+        ptr = query->next;
+        free(query);
+        query = ptr;
+    }
+}
+
+void gc_main(t_esk_main *eskdron)
+{
+    esk_garbage(eskdron->garb);
+    esk_query_garbage(eskdron->query);
+}

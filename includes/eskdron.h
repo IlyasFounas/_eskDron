@@ -3,6 +3,7 @@
 
 # define RUN "run"
 # define EXIT "exit"
+# define ESK_FILE "queries/esk_query"
 
 # include "structs.h"
 # include "get_next_line.h"
@@ -16,13 +17,29 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
+
+//////////////////////CREATE//////////////////////////////
+/*_____create_utils_____*/
+t_esk_q_infos *q_new_node(char *content, t_type cmd);
+t_esk_q_infos *q_last_node(t_esk_q_infos *main);
+void q_add_back(t_esk_q_infos **main, t_esk_q_infos *new, int *pb);
+////////////////////////////////////////////////////////
+
+
+//////////////////////FREE//////////////////////////////
 /*_____esk_garbage_utils_____*/
 t_esk_garbage *esk_new_node(char *s);
 t_esk_garbage *esk_last_node(t_esk_garbage *garb);
 void esk_add_back(t_esk_garbage **garb, t_esk_garbage *new);
 
-
 /*_____esk_garbage_____*/
 void esk_garbage(t_esk_garbage *garb);
+void gc_main(t_esk_main *eskdron);
+////////////////////////////////////////////////////////
+
+//////////////////////RUN///////////////////////////////
+/*_____run_____*/
+void run_parsing_query_engine();
+////////////////////////////////////////////////////////
 
 #endif

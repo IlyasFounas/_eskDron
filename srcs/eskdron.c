@@ -1,6 +1,6 @@
 #include "eskdron.h"
 
-void ft_readline(t_esk_garbage *garb)
+void ft_readline()
 {    
     int fd;
     char *s;
@@ -12,26 +12,23 @@ void ft_readline(t_esk_garbage *garb)
         s = get_next_line(fd);
         if (s)
         {
-            esk_add_back(&garb, esk_new_node(s));
-            esk_add_back(&garb, esk_new_node(s));
-            esk_add_back(&garb, esk_new_node(s));
             if (ft_strncmp(RUN, s, ft_strlen(RUN)) == 0)
-                printf("RUN_THE_ESK_QUERY_ENGINE\n");
-            if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
-            {
-                esk_garbage(garb);
-                return ;
-            }
+                run_parsing_query_engine();
+            else if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
+                return (free(s));
+            else if (ft_strncmp("\n", s, ft_strlen("\n")) != 0)
+                printf("this is not a command\n");
+            free(s);
         }
     }
 }
 
 int main(void)
 {
-    t_esk_garbage *garb;
-
-    garb = esk_new_node(NULL);
-    ft_putstr_fd("\t\tWELCOME TO _eskDron\n", 1);
-    ft_readline(garb);
+    ft_putstr_fd("\t\tWELCOME TO _eskDron\n\n", 1);
+    ft_putstr_fd("\t\tit's a mini query engine\n", 1);
+    ft_putstr_fd("\t\tpowered by the esk_query_language\n", 1);
+    ft_putstr_fd("\t\tby Ilyas Founas\n", 1);
+    ft_readline();
     return (0);
 }
