@@ -3,7 +3,7 @@
 
 # define RUN "run"
 # define EXIT "exit"
-# define ESK_FILE "queries/esk_query"
+# define ESK_FILE "user_space/script/esk_query"
 
 # include "structs.h"
 # include "get_next_line.h"
@@ -19,6 +19,8 @@
 
 
 //////////////////////CREATE//////////////////////////////
+/*_____create_db_table_____*/
+void create_db(t_esk_main *eskdron, char *s);
 /*_____create_utils_____*/
 t_esk_q_infos *q_new_node(char *content, t_type cmd);
 t_esk_q_infos *q_last_node(t_esk_q_infos *main);
@@ -39,7 +41,14 @@ void gc_main(t_esk_main *eskdron);
 
 //////////////////////RUN///////////////////////////////
 /*_____run_____*/
-void run_parsing_query_engine();
+int tokens_create(t_esk_main *eskdron, char *s);
+////////////////////////////////////////////////////////
+
+
+
+//////////////////////RUN///////////////////////////////
+/*_____run_____*/
+void run_parsing_query_engine(char **envp);
 ////////////////////////////////////////////////////////
 
 #endif

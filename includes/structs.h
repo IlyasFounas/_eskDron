@@ -4,6 +4,7 @@
 typedef enum e_type
 {
 	CREATE,
+	DB_CREATE,
     INSERT,
     UPDATE,
     DELETE,
@@ -35,6 +36,7 @@ typedef struct s_esk_main
     t_esk_garbage *garb;
     t_esk_q_infos *query;
     int fd_query_file;
+    char **envp;
 } t_esk_main;
 
 #endif

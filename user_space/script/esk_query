@@ -1,0 +1,4 @@
+/*Define first for better understanding*/
+#define DB "truc"
+
+ESK_DATABASE_CREATE test

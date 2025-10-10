@@ -1,9 +1,9 @@
 /*Define first for better understanding*/
 #define DB "truc"
 
-ESK_DATABASE_CREATE dbname;
+ESK_DATABASE_CREATE test;
 
-ESK_TABLE_CREATE table_name;
+ESK_TABLE_CREATE test.users;
 
 ESK_SELECT fields(decrypt($DB.table_name.password))
 {

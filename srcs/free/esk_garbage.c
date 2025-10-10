@@ -32,6 +32,8 @@ void esk_query_garbage(t_esk_q_infos *query)
 
 void gc_main(t_esk_main *eskdron)
 {
+    if (eskdron->fd_query_file > -1)
+        close(eskdron->fd_query_file);
     esk_garbage(eskdron->garb);
     esk_query_garbage(eskdron->query);
 }
