@@ -45,3 +45,9 @@ make
 
 # Run the database engine
 ./eskdron
+
+# To run the script
+run
+
+# To exit the database
+exit 
