@@ -3,16 +3,18 @@
 void esk_garbage(t_esk_garbage *garb)
 {
     t_esk_garbage *ptr;
+    t_esk_garbage *next;
+
     if (!garb)
         return ;
     ptr = garb;
-    while (garb)
+    while (ptr)
     {
-        ptr = garb->next;
-        if (garb->s)
-            free(garb->s);
-        free(garb);
-        garb = ptr;
+        next = ptr->next;
+        if (ptr->s)
+            free(ptr->s);
+        free(ptr);
+        ptr = next;
     }
 }
 
@@ -25,6 +27,8 @@ void esk_query_garbage(t_esk_q_infos *query)
     while (query)
     {
         ptr = query->next;
+        if (query->s)
+            free(query->s);
         free(query);
         query = ptr;
     }

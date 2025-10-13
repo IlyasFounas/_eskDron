@@ -8,6 +8,7 @@ void define_type(char *s, t_type *type)
         *type = CREATE;
 }
 
+
 int tokens_create(t_esk_main *eskdron, char *s)
 {
     int fail;
@@ -26,7 +27,7 @@ int tokens_create(t_esk_main *eskdron, char *s)
         define_type(tab[i], &type);
         q_add_back(&eskdron->query, q_new_node(tab[i], type), &fail);
         if (fail == 1)
-            break ;
+            return (free_tab(tab, i), fail);
         if (type == DB_CREATE)
             type = DB_NAME;
         else if (type == CREATE)
@@ -34,5 +35,6 @@ int tokens_create(t_esk_main *eskdron, char *s)
         else
             type = CONTENT;
     }
+    free(tab);
     return (fail);
 }

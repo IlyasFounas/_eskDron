@@ -15,5 +15,6 @@ void create_db(t_esk_main *eskdron, char *s)
         execve("/bin/mkdir", ft_split(res, ' '), eskdron->envp);
         free(res);
         gc_main(eskdron);
+        exit(0);
     }
 }
