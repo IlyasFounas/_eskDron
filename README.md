@@ -4,9 +4,9 @@
 
 ## 📖 Introduction
 
-**_eskDron** is a personal project - a lightweight, high-performance local database engine written entirely in C. Born from a passion for data structures and algorithms, this project aims to provide a robust foundation for applications requiring efficient data storage and retrieval.
+**_eskDron** is a personal project - a lightweight, local database engine written entirely in C. Born from a passion for data structures and algorithms, this project aims to provide a robust foundation for applications requiring efficient data storage and retrieval.
 
-Inspired by the elite squadrons of the Star Wars universe, _eskDron is designed to be **fast, reliable, and mission-critical** - handling your data with the precision of a well-coordinated fleet.
+Inspired by the elite squadrons of the Star Wars universe, _eskDron is designed to be **fast and usefull** - handling your data with the precision of a well-coordinated fleet.
 
 ## ✨ Features
 
@@ -16,21 +16,15 @@ Inspired by the elite squadrons of the Star Wars universe, _eskDron is designed 
 - Comprehensive data retrieval and modification capabilities
 
 ### 📜 **ESK_SCRIPT System**
-- Advanced scripting capabilities for complex operations
 - Automated batch processing and data transformations
 - Custom workflow automation
 
 ### 🏗️ **Core Architecture**
+- Written in pure C for maximum performance
 - Optimized search and sorting algorithms
 - Efficient memory management
-- Modular and extensible design
-- High-performance data structures
-
-### 🔧 **Technical Excellence**
-- Written in pure C for maximum performance
-- Zero external dependencies
-- Cross-platform compatibility
 - Memory-safe operations
+- Modular and extensible design
 
 ## 🚀 Getting Started
 
