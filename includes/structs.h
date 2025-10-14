@@ -3,14 +3,15 @@
 
 typedef enum e_type
 {
-	CREATE,
 	DB_CREATE,
+	CREATE,
     INSERT,
     UPDATE,
     DELETE,
     DB_NAME,
     T_NAME,
-    CONTENT
+    CONTENT,
+    DEFINE
 } t_type;
 
 /**

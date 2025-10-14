@@ -5,7 +5,7 @@ ESK_DATABASE_CREATE test;
 
 ESK_TABLE_CREATE test.users;
 
-ESK_SELECT fields(decrypt($DB.table_name.password))
+ESK_SELECT fields($DB.table_name.password)
 {
     from $DB.table_name
     where $DB.table_name.column = 14,
@@ -16,7 +16,6 @@ ESK_INSERT table_name(table = $DB.table_name)
 {
     table.username = "TRUC";
     table.phone = 14525185;
-    table.password = encrypt(string);
 }
 
 /**

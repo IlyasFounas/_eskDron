@@ -1,13 +1,24 @@
 #include "eskdron.h"
 
-void define_type(char *s, t_type *type)
+static void define_type(char *s, t_type *type)
 {
     if (ft_strncmp(s, "ESK_DATABASE_CREATE", ft_strlen(s)) == 0)
         *type = DB_CREATE;
     else if (ft_strncmp(s, "ESK_TABLE_CREATE", ft_strlen(s)) == 0)
         *type = CREATE;
+    else if (ft_strncmp(s, "#define", ft_strlen(s)) == 0)
+        *type = CREATE;
 }
 
+static void modify_type(t_type *type)
+{
+    if (*type == DB_CREATE)
+        *type = DB_NAME;
+    else if (*type == CREATE)
+        *type = T_NAME;
+    else
+        *type = CONTENT;
+}
 
 int tokens_create(t_esk_main *eskdron, char *s)
 {
@@ -28,12 +39,7 @@ int tokens_create(t_esk_main *eskdron, char *s)
         q_add_back(&eskdron->query, q_new_node(tab[i], type), &fail);
         if (fail == 1)
             return (free_tab(tab, i), fail);
-        if (type == DB_CREATE)
-            type = DB_NAME;
-        else if (type == CREATE)
-            type = T_NAME;
-        else
-            type = CONTENT;
+        modify_type(&type);
     }
     free(tab);
     return (fail);

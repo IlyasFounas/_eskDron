@@ -1,4 +1,4 @@
 /*Define first for better understanding*/
-#define DB "truc"
+#define DB "test"
 
 ESK_DATABASE_CREATE test
