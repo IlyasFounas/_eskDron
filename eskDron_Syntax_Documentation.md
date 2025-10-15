@@ -50,9 +50,9 @@ Here’s an example of a **SELECT** statement:
 ```c
 ESK_SELECT fields($DB.$TABLE.password)
 {
-    from $DB.table_name
-    filters $DB.table_name.column = 14,
-            $DB.table_name.column.find("@hotmail.fr");
+    from $DB.$TABLE
+    filters $DB.$TABLE.column = 14,
+            $DB.$TABLE.column.find("@hotmail.fr");
 }
 ```
 
@@ -76,8 +76,8 @@ ESK_CREATE_TABLE $TABLE;
 
 ESK_SELECT fields($DB.$TABLE.password)
 {
-    from $DB.table_name
-    filters $DB.table_name.column = 14,
-            $DB.table_name.column.find("@hotmail.fr");
+    from $DB.$TABLE
+    filters $DB.$TABLE.column = 14,
+            $DB.$TABLE.column.find("@hotmail.fr");
 }
 ```
