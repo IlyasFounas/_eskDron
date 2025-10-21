@@ -21,6 +21,7 @@
 //////////////////////CREATE//////////////////////////////
 /*_____create_db_table_____*/
 void create_db(t_esk_main *eskdron, char *s);
+void create_table(t_esk_main *eskdron, char *s);
 /*_____create_utils_____*/
 t_esk_q_infos *q_new_node(char *content, t_type cmd);
 t_esk_q_infos *q_last_node(t_esk_q_infos *main);
@@ -48,11 +49,11 @@ void run_query_engine(t_esk_main *eskdron);
 ////////////////////////////////////////////////////////
 
 //////////////////////TOKENS////////////////////////////
-/*_____tokens_create_free_____*/
+/*_____tokensfree_____*/
 void free_tab(char **tab, int i);
 
-/*_____tokens_create_____*/
-int tokens_create(t_esk_main *eskdron, char *s);
+/*_____tokens_____*/
+int tokens(t_esk_main *eskdron, char *s);
 ////////////////////////////////////////////////////////
 
 

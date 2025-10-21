@@ -7,7 +7,7 @@ static void define_type(char *s, t_type *type)
     else if (ft_strncmp(s, "ESK_TABLE_CREATE", ft_strlen(s)) == 0)
         *type = CREATE;
     else if (ft_strncmp(s, "#define", ft_strlen(s)) == 0)
-        *type = CREATE;
+        *type = DEFINE;
 }
 
 static void modify_type(t_type *type)
@@ -20,7 +20,7 @@ static void modify_type(t_type *type)
         *type = CONTENT;
 }
 
-int tokens_create(t_esk_main *eskdron, char *s)
+int tokens(t_esk_main *eskdron, char *s)
 {
     int fail;
     int i;

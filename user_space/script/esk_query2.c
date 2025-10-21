@@ -3,7 +3,7 @@
 
 ESK_DATABASE_CREATE test;
 
-ESK_TABLE_CREATE test.users;
+ESK_TABLE_CREATE test/users;
 
 ESK_SELECT fields($DB.table_name.password)
 {

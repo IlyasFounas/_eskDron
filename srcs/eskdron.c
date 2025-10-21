@@ -13,20 +13,21 @@ void ft_readline(t_esk_main *eskdron)
         if (s)
         {
             eskdron->garb = esk_new_node(NULL);
-            eskdron->query = q_new_node(NULL, CONTENT);
+            eskdron->query = q_new_node(s, CONTENT);
             if (ft_strncmp(RUN, s, ft_strlen(RUN)) == 0)
                 run_parsing_query_engine(eskdron);
             else if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
             {
                 gc_main(eskdron);
-                return (free(s));
+                return ;
             }
             else if (ft_strncmp("\n", s, ft_strlen("\n")) != 0)
             {
                 printf("this is not a command\n");
                 gc_main(eskdron);
             }
-            free(s);
+            else
+                gc_main(eskdron);
         }
     }
 }
