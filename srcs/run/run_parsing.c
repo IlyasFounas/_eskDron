@@ -1,5 +1,8 @@
 #include "eskdron.h"
 
+// create the tokens (tokens() function)
+// the tokens are created non efficentily and needed a big refacto
+// but for the beta it's acceptable
 void run_parsing_query_engine(t_esk_main *eskdron)
 {
     char *s;

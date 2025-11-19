@@ -19,8 +19,10 @@
 
 
 //////////////////////CREATE//////////////////////////////
-/*_____create_db_table_____*/
+/*_____create_db_____*/
+int dir_exist(char *s);
 void create_db(t_esk_main *eskdron, char *s);
+/*_____create_table_____*/
 void create_table(t_esk_main *eskdron, char *s);
 /*_____create_utils_____*/
 t_esk_q_infos *q_new_node(char *content, t_type cmd);

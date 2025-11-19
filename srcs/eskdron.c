@@ -1,5 +1,8 @@
 #include "eskdron.h"
 
+// Every new lines call the garbage collector
+// To don't take all the memory, 
+// when the execution finish we free all the memory
 void ft_readline(t_esk_main *eskdron)
 {    
     int fd;
@@ -44,6 +47,7 @@ int main(int argc, char **argv, char **envp)
     ft_putstr_fd("\t\tit's a mini query engine\n", 1);
     ft_putstr_fd("\t\tpowered by the esk_query_language\n", 1);
     ft_putstr_fd("\t\tby Ilyas Founas\n", 1);
+
     ft_readline(&eskdron);
     return (0);
 }
