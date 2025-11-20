@@ -1,6 +1,6 @@
 /*Define first for better understanding*/
 #define DB "test"
 
-ESK_DATABASE_CREATE test
+ESK_DATABASE_CREATE $DB
 
-ESK_TABLE_CREATE test/users
+ESK_TABLE_CREATE $DB/users

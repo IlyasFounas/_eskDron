@@ -17,7 +17,7 @@ void create_table(t_esk_main *eskdron, char *s)
             execve("/bin/touch", ft_split(res, ' '), eskdron->envp);
         free(res2);
         free(res);
-        gc_main(eskdron);
+        gc_crush_malloc(eskdron);
         exit(0);
     }
 }

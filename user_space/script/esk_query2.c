@@ -1,22 +1,23 @@
 /*Define first for better understanding*/
-#define DB "truc"
+#define DB "test"
 
-ESK_DATABASE_CREATE test;
+ESK_DATABASE_CREATE $DB;
 
-ESK_TABLE_CREATE test/users;
-
-ESK_SELECT fields($DB.table_name.password)
-{
-    from $DB.table_name
-    where $DB.table_name.column = 14,
-    $DB.table_name.column.contains("@hotmail.fr")
-}
+ESK_TABLE_CREATE $DB.users;
 
 ESK_INSERT table_name(table = $DB.table_name)
 {
     table.username = "TRUC";
     table.phone = 14525185;
 }
+
+ESK_SELECT fields(password)
+{
+    from $DB.users;                      //Where we going to sort the fields
+    where $DB.users.nb_commands < 10;
+    $DB.users.mail.contains("@hotmail.fr");
+}
+
 
 /**
  * #define vars

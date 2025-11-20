@@ -13,6 +13,8 @@ void wich_action(t_esk_main *eskdron, t_esk_q_infos *ptr,
         create_table(eskdron, ptr->s);
         *table_create = 0;
     }
+    else if (ptr->cmd == DEFINE)
+        new_variable(eskdron, ptr);
 }
 
 // it's the heart of the reactor, we parse everything

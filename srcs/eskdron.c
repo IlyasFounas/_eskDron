@@ -1,4 +1,28 @@
 #include "eskdron.h"
+#include <signal.h>
+#include <unistd.h>
+
+volatile sig_atomic_t g_sigint = 0;
+
+void sigint_handler(int sig)
+{
+    (void)sig;
+    g_sigint = 1;
+    write(1, "\n", 1);
+}
+
+void set_signals(void)
+{
+    struct sigaction sa;
+
+    ft_memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = sigint_handler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = SA_RESTART;
+
+    sigaction(SIGINT, &sa, NULL);
+    signal(SIGQUIT, SIG_IGN);
+}
 
 // Every new lines call the garbage collector
 // To don't take all the memory, 
@@ -13,25 +37,14 @@ void ft_readline(t_esk_main *eskdron)
     while (42)
     {
         s = get_next_line(fd);
-        if (s)
+        if (g_sigint)
         {
-            eskdron->garb = esk_new_node(NULL);
-            eskdron->query = q_new_node(s, CONTENT);
-            if (ft_strncmp(RUN, s, ft_strlen(RUN)) == 0)
-                run_parsing_query_engine(eskdron);
-            else if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
-            {
-                gc_main(eskdron);
-                return ;
-            }
-            else if (ft_strncmp("\n", s, ft_strlen("\n")) != 0)
-            {
-                printf("this is not a command\n");
-                gc_main(eskdron);
-            }
-            else
-                gc_main(eskdron);
+            g_sigint = 0;
+            gc_crush_malloc(eskdron);
+            return ;
         }
+        if (start_parsing(eskdron, s) == 1)
+            return ;
     }
 }
 
@@ -48,6 +61,7 @@ int main(int argc, char **argv, char **envp)
     ft_putstr_fd("\t\tpowered by the esk_query_language\n", 1);
     ft_putstr_fd("\t\tby Ilyas Founas\n", 1);
 
+    set_signals();
     ft_readline(&eskdron);
     return (0);
 }

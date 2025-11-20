@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 
-//////////////////////CREATE//////////////////////////////
+/*___________________CREATE___________________________*/
 /*_____create_db_____*/
 int dir_exist(char *s);
 void create_db(t_esk_main *eskdron, char *s);
@@ -28,10 +28,9 @@ void create_table(t_esk_main *eskdron, char *s);
 t_esk_q_infos *q_new_node(char *content, t_type cmd);
 t_esk_q_infos *q_last_node(t_esk_q_infos *main);
 void q_add_back(t_esk_q_infos **main, t_esk_q_infos *new, int *pb);
-////////////////////////////////////////////////////////
 
 
-//////////////////////FREE//////////////////////////////
+/*___________________FREE_____________________________*/
 /*_____esk_garbage_utils_____*/
 t_esk_garbage *esk_new_node(char *s);
 t_esk_garbage *esk_last_node(t_esk_garbage *garb);
@@ -39,24 +38,26 @@ void esk_add_back(t_esk_garbage **garb, t_esk_garbage *new);
 
 /*_____esk_garbage_____*/
 void esk_garbage(t_esk_garbage *garb);
-void gc_main(t_esk_main *eskdron);
-////////////////////////////////////////////////////////
+void gc_crush_malloc(t_esk_main *eskdron);
 
-//////////////////////RUN///////////////////////////////
 /*_____run_parsing_____*/
+int start_parsing(t_esk_main *eskdron, char *s);
 void run_parsing_query_engine(t_esk_main *eskdron);
 
 /*_____run_query_engine_____*/
 void run_query_engine(t_esk_main *eskdron);
-////////////////////////////////////////////////////////
 
-//////////////////////TOKENS////////////////////////////
+
+/*______________________TOKENS___________________________*/
 /*_____tokensfree_____*/
 void free_tab(char **tab, int i);
 
 /*_____tokens_____*/
 int tokens(t_esk_main *eskdron, char *s);
-////////////////////////////////////////////////////////
+
+
+/*______________________VARIABLES________________________*/
+void new_variable(t_esk_main *eskdron, t_esk_q_infos *ptr);
 
 
 #endif
