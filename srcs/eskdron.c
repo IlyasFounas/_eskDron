@@ -40,6 +40,7 @@ void ft_readline(t_esk_main *eskdron)
         if (g_sigint)
         {
             g_sigint = 0;
+            free_envp(eskdron->envp);
             gc_crush_malloc(eskdron);
             return ;
         }
@@ -55,7 +56,7 @@ int main(int argc, char **argv, char **envp)
     t_esk_main eskdron;
 
     ft_memset(&eskdron, 0, sizeof(t_esk_main));
-    eskdron.envp = envp;
+    eskdron.envpp = envp;
     ft_putstr_fd("\t\tWELCOME TO _eskDron\n\n", 1);
     ft_putstr_fd("\t\tit's a mini query engine\n", 1);
     ft_putstr_fd("\t\tpowered by the esk_query_language\n", 1);
@@ -63,5 +64,7 @@ int main(int argc, char **argv, char **envp)
 
     set_signals();
     ft_readline(&eskdron);
+    free_envp(eskdron.envp);
+    gc_crush_malloc(&eskdron);
     return (0);
 }

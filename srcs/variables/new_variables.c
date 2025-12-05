@@ -1,13 +1,44 @@
 #include "eskdron.h"
 
-// char **realloc(char **old_envp, char *new_variable)
-// {
+t_envp *return_new_node(char *res)
+{
+    t_envp *new = malloc(sizeof(t_envp));
+    if (!new)
+        return (NULL);
+    new->s = res;
+    new->next = NULL;
+    return (new);
+}
 
-// }
+void add_new_variable(t_esk_main *eskdron, char *res)
+{
+    t_envp *ptr;
+
+    if (!eskdron->envp)
+    {
+        eskdron->envp = return_new_node(res);
+        if (!eskdron->envp)
+        {
+            free_envp(eskdron->envp);
+            gc_crush_malloc(eskdron);
+        }
+        return ;
+    }
+    while (eskdron->envp)
+    {
+        ptr = eskdron->envp;
+        eskdron->envp = eskdron->envp->next;
+    }
+    ptr->next = return_new_node(res);
+    if (!ptr->next)
+    {
+        free_envp(eskdron->envp);
+        gc_crush_malloc(eskdron);
+    }
+}
 
 void new_variable(t_esk_main *eskdron, t_esk_q_infos *ptr)
 {
-    (void)eskdron;
     char *variable;
     char *res;
     char *trim;
@@ -24,8 +55,7 @@ void new_variable(t_esk_main *eskdron, t_esk_q_infos *ptr)
         free(variable);
     }
     printf("%s\n", res);
-    if (res)
-        free(res);
+    add_new_variable(eskdron, res);
     if (trim)
         free(trim);
 }

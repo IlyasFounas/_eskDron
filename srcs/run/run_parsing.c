@@ -1,31 +1,6 @@
 #include "eskdron.h"
 
-int start_parsing(t_esk_main *eskdron, char *s)
-{
-    if (s)
-    {
-        eskdron->garb = esk_new_node(NULL);
-        eskdron->query = q_new_node(s, CONTENT);
-        if (ft_strncmp(RUN, s, ft_strlen(RUN)) == 0)
-            run_parsing_query_engine(eskdron);
-        else if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
-        {
-            gc_crush_malloc(eskdron);
-            return (1);
-        }
-        else if (ft_strncmp("\n", s, ft_strlen("\n")) != 0)
-        {
-            printf("this is not a command\n");
-            gc_crush_malloc(eskdron);
-        }
-        else
-            gc_crush_malloc(eskdron);
-        return (0);
-    }
-    return (1);
-}
-
-// create the tokens (tokens() function)
+// create the tokens (create_tokens() function)
 // the tokens are created non efficentily and needed a big refacto
 // but for the beta it's acceptable
 void run_parsing_query_engine(t_esk_main *eskdron)
@@ -40,13 +15,38 @@ void run_parsing_query_engine(t_esk_main *eskdron)
             esk_add_back(&eskdron->garb, esk_new_node(s));
             if (s)
             {
-                if (tokens(eskdron, s) == 1)
+                if (create_tokens(eskdron, s) == 1)
                     break ;
             }
         } while (s);
-        
         run_query_engine(eskdron);
     }
     gc_crush_malloc(eskdron);
     return ;
+}
+
+int start_parsing(t_esk_main *eskdron, char *s)
+{
+    if (s)
+    {
+        eskdron->garb = esk_new_node(NULL);
+        eskdron->query = q_new_node(s, CONTENT);
+        if (ft_strncmp(RUN, s, ft_strlen(RUN)) == 0)
+            run_parsing_query_engine(eskdron);
+        else if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
+        {
+            free_envp(eskdron->envp);
+            gc_crush_malloc(eskdron);
+            return (1);
+        }
+        else if (ft_strncmp("\n", s, ft_strlen("\n")) != 0)
+        {
+            printf("this is not a command\n");
+            gc_crush_malloc(eskdron);
+        }
+        else
+            gc_crush_malloc(eskdron);
+        return (0);
+    }
+    return (1);
 }

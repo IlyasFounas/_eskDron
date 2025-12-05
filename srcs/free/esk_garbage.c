@@ -1,5 +1,20 @@
 #include "eskdron.h"
 
+void free_envp(t_envp *envp)
+{
+    t_envp *ptr;
+
+    while (envp)
+    {
+        ptr = envp;
+        envp = envp->next;
+        if (ptr->s)
+            free(ptr->s);
+        free(ptr);
+    }
+    return ;
+}
+
 void esk_garbage(t_esk_garbage *garb)
 {
     t_esk_garbage *ptr;
@@ -40,4 +55,6 @@ void gc_crush_malloc(t_esk_main *eskdron)
         close(eskdron->fd_query_file);
     esk_garbage(eskdron->garb);
     esk_query_garbage(eskdron->query);
+    eskdron->query = NULL;
+    eskdron->garb = NULL;
 }

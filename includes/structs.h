@@ -1,6 +1,12 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+typedef struct s_envp
+{
+    struct s_envp    *next;
+    char *s;
+} t_envp;
+
 typedef enum e_type
 {
 	DB_CREATE,
@@ -14,11 +20,6 @@ typedef enum e_type
     DEFINE
 } t_type;
 
-/**
- * @brief This struct contains the parsing
- * of the esk_query file
- * 
- */
 typedef struct s_esk_q_infos
 {
     struct s_esk_q_infos    *next;
@@ -37,7 +38,8 @@ typedef struct s_esk_main
     t_esk_garbage *garb;
     t_esk_q_infos *query;
     int fd_query_file;
-    char **envp;
+    char **envpp;
+    t_envp *envp;
 } t_esk_main;
 
 #endif

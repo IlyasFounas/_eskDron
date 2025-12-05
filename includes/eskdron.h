@@ -37,12 +37,12 @@ t_esk_garbage *esk_last_node(t_esk_garbage *garb);
 void esk_add_back(t_esk_garbage **garb, t_esk_garbage *new);
 
 /*_____esk_garbage_____*/
+void free_envp(t_envp *envp);
 void esk_garbage(t_esk_garbage *garb);
 void gc_crush_malloc(t_esk_main *eskdron);
 
 /*_____run_parsing_____*/
 int start_parsing(t_esk_main *eskdron, char *s);
-void run_parsing_query_engine(t_esk_main *eskdron);
 
 /*_____run_query_engine_____*/
 void run_query_engine(t_esk_main *eskdron);
@@ -53,7 +53,7 @@ void run_query_engine(t_esk_main *eskdron);
 void free_tab(char **tab, int i);
 
 /*_____tokens_____*/
-int tokens(t_esk_main *eskdron, char *s);
+int create_tokens(t_esk_main *eskdron, char *s);
 
 
 /*______________________VARIABLES________________________*/

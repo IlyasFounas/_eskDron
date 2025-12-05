@@ -20,7 +20,7 @@ static void modify_type(t_type *type)
         *type = CONTENT;
 }
 
-int tokens(t_esk_main *eskdron, char *s)
+int create_tokens(t_esk_main *eskdron, char *s)
 {
     int fail;
     int i;
