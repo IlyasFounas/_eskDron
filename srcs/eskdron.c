@@ -41,6 +41,7 @@ void ft_readline(t_esk_main *eskdron)
         {
             g_sigint = 0;
             free_envp(eskdron->envp);
+            eskdron->envp = NULL;
             gc_crush_malloc(eskdron);
             return ;
         }
@@ -65,6 +66,7 @@ int main(int argc, char **argv, char **envp)
     set_signals();
     ft_readline(&eskdron);
     free_envp(eskdron.envp);
+    eskdron.envp = NULL;
     gc_crush_malloc(&eskdron);
     return (0);
 }

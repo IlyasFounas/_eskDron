@@ -8,8 +8,10 @@ void free_envp(t_envp *envp)
     {
         ptr = envp;
         envp = envp->next;
-        if (ptr->s)
-            free(ptr->s);
+        if (ptr->var)
+            free(ptr->var);
+        if (ptr->content)
+            free(ptr->content);
         free(ptr);
     }
     return ;

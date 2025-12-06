@@ -36,7 +36,8 @@ int create_tokens(t_esk_main *eskdron, char *s)
     while (tab[++i])
     {
         define_type(tab[i], &type);
-        q_add_back(&eskdron->query, q_new_node(tab[i], type), &fail);
+        q_add_back(&eskdron->query,
+            q_new_node(simple_expand(eskdron, tab[i]), type), &fail);
         if (fail == 1)
             return (free_tab(tab, i), fail);
         modify_type(&type);

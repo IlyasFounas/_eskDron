@@ -25,7 +25,7 @@ void create_db(t_esk_main *eskdron, char *s)
         res2 = ft_strjoin("user_space/databases/" , s);
         res = ft_strjoin_sh("mkdir", res2, 0);
         if (dir_exist(res2) == 0)
-            execve("/bin/mkdir", ft_split(res, ' '), eskdron->envp);
+            execve("/bin/mkdir", ft_split(res, ' '), eskdron->envpp);
         free(res2);
         free(res);
         gc_crush_malloc(eskdron);

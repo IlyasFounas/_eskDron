@@ -36,6 +36,7 @@ int start_parsing(t_esk_main *eskdron, char *s)
         else if (ft_strncmp(EXIT, s, ft_strlen(EXIT)) == 0)
         {
             free_envp(eskdron->envp);
+            eskdron->envp = NULL;
             gc_crush_malloc(eskdron);
             return (1);
         }

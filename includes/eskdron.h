@@ -57,6 +57,10 @@ int create_tokens(t_esk_main *eskdron, char *s);
 
 
 /*______________________VARIABLES________________________*/
+/*_____expand_variables_____*/
+char *simple_expand(t_esk_main *eskdron, char *var);
+
+/*_____new_variable_____*/
 void new_variable(t_esk_main *eskdron, t_esk_q_infos *ptr);
 
 

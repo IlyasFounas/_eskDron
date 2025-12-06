@@ -4,7 +4,8 @@
 typedef struct s_envp
 {
     struct s_envp    *next;
-    char *s;
+    char *var;
+    char *content;
 } t_envp;
 
 typedef enum e_type
