@@ -10,8 +10,8 @@ It allows you to define variables, create databases and tables, and perform CRUD
 You can define variables using the `#define` directive:
 
 ```c
-#define DB "test"
-#define TABLE "user_test"
+#define DB test
+#define TABLE user_test
 ```
 
 To use a defined variable, prefix it with a `$` symbol.  
@@ -68,8 +68,8 @@ ESK_SELECT fields($DB.$TABLE.password)
 Full example:
 
 ```c
-#define DB "test"
-#define TABLE "user_test"
+#define DB test
+#define TABLE user_test
 
 ESK_CREATE_DATABASE $DB;
 ESK_CREATE_TABLE $TABLE;
