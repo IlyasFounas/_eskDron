@@ -5,9 +5,15 @@
 int dir_exist(char *s)
 {
     struct stat path_stat;
+
     if (stat(s, &path_stat) != 0)
     {
-        ft_putstr_fd("This is database already exist\n", 2);
+        ft_putstr_fd("Directory does not exist\n", 2);
+        return (1);
+    }
+    if (!S_ISDIR(path_stat.st_mode))
+    {
+        ft_putstr_fd("Path exists but is not a directory\n", 2);
         return (0);
     }
     return (1);
@@ -24,7 +30,7 @@ void create_db(t_esk_main *eskdron, char *s)
     {
         res2 = ft_strjoin("user_space/databases/" , s);
         res = ft_strjoin_sh("mkdir", res2, 0);
-        if (dir_exist(res2) == 0)
+        if (dir_exist(res2) == 1)
             execve("/bin/mkdir", ft_split(res, ' '), eskdron->envpp);
         free(res2);
         free(res);

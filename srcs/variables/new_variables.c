@@ -17,6 +17,8 @@ t_envp *return_new_node(char *variable, char *trim)
         return (NULL);
     ft_strlcpy(new->var, variable, var_s + 1);
     ft_strlcpy(new->content, trim, trim_s + 1);
+    if (new->content[trim_s - 1] == '\n')
+        new->content[trim_s - 1] = '\0';
     new->next = NULL;
     return (new);
 }
@@ -64,7 +66,7 @@ void new_variable(t_esk_main *eskdron, t_esk_q_infos *ptr)
     // t_envp *print = eskdron->envp;
     // while (print)
     // {
-    //     printf("%s %s\n", print->var, print->content);
+    //     printf("'%s' '%s'\n", print->var, print->content);
     //     print = print->next;
     // }
 }

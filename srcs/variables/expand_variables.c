@@ -5,6 +5,7 @@ char *simple_expand(t_esk_main *eskdron, char *var)
     t_envp *envp = eskdron->envp;
     int i = -1;
     int expand = 0;
+    int nb_strncmp = ft_strlen(&var[1]);
 
     while (var[++i])
     {
@@ -18,8 +19,9 @@ char *simple_expand(t_esk_main *eskdron, char *var)
         return (var);
     while (envp)
     {
-        printf("HERE\n");
-        if (ft_strncmp(envp->var, &var[1], ft_strlen(var) - 1) == 0)
+        if (var[nb_strncmp] == '\n')
+            nb_strncmp--;
+        if (ft_strncmp(envp->var, &var[1], nb_strncmp) != 0)
             return (envp->content);
         envp = envp->next;
     }
