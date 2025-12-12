@@ -16,7 +16,7 @@ int dir_exist(char *s)
         ft_putstr_fd("Path exists but is not a directory\n", 2);
         return (0);
     }
-    return (1);
+    return (0);
 }
 
 void create_db(t_esk_main *eskdron, char *s)
