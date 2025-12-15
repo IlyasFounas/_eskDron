@@ -5,13 +5,16 @@
 // but for the beta it's acceptable
 void run_parsing_query_engine(t_esk_main *eskdron)
 {
+    char *s1;
     char *s;
 
     eskdron->fd_query_file = open(ESK_FILE,  O_CREAT | O_RDWR | O_APPEND);
     if (eskdron->fd_query_file > -1)
     {
         do {
-            s = get_next_line(eskdron->fd_query_file);
+            s1 = get_next_line(eskdron->fd_query_file);
+            s = ft_strtrim(s1, "\n");
+            free(s1);
             esk_add_back(&eskdron->garb, esk_new_node(s));
             if (s)
             {

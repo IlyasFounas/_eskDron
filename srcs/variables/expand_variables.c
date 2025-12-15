@@ -1,6 +1,6 @@
 #include "eskdron.h"
 
-char *return_res(t_esk_main *eskdron, char *content, char *var, int i)
+char *return_res(t_esk_main *eskdron, char *content, char *var, int i, int nb_strncmp)
 {
     char *res;
     int j = -1;
@@ -8,7 +8,7 @@ char *return_res(t_esk_main *eskdron, char *content, char *var, int i)
     int nb_content = ft_strlen(content);
     int nb_to_malloc = nb_content + ft_strlen(&var[i + 1]);
 
-    while (++j < i)
+    while (++j <= i)
         nb_to_malloc++;
     res = malloc(((nb_to_malloc + 1) * sizeof(char)));
     if (!res)
@@ -19,9 +19,9 @@ char *return_res(t_esk_main *eskdron, char *content, char *var, int i)
         res[j] = var[j];
     while (content[++y])
         res[j + y] = content[y];
-    while (var[++i])
+    while (var[++i + nb_strncmp])
     {
-        res[j + y] = var[i];
+        res[j + y] = var[i + nb_strncmp];
         y++;
     }
     res[j + y] = '\0';
@@ -52,10 +52,10 @@ char *simple_expand(t_esk_main *eskdron, char *var)
             nb_strncmp--;
         if (ft_strncmp(envp->var, &var[i + 1], nb_strncmp) != 0)
         {
-            char *res = return_res(eskdron, envp->content, var, i);
-            printf("%s\n", res);
+            char *res = return_res(eskdron, envp->content, var, i, nb_strncmp);
+            printf("print = %s\n", res);
             exit(0);
-            return (return_res(eskdron, envp->content, var, i));
+            return (return_res(eskdron, envp->content, var, i, nb_strncmp));
         }
         envp = envp->next;
     }

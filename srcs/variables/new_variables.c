@@ -16,7 +16,7 @@ t_envp *return_new_node(char *variable, char *trim)
     if (!new->content)
         return (NULL);
     ft_strlcpy(new->var, variable, var_s + 1);
-    ft_strlcpy(new->content, trim, trim_s + 1);
+    ft_strlcpy(new->content, trim, trim_s);
     if (new->content[trim_s - 1] == '\n')
         new->content[trim_s - 1] = '\0';
     new->next = NULL;
