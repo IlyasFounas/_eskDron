@@ -5,7 +5,7 @@
 _eskDron is a lightweight, local database engine written entirely in C for performance.  
 The project is based on a SQL-like query language with low-level execution control in C.
 
-For now, the database can only be controlled using scripts. In the future, a dedicated library named **lib_eskdron** is planned to expose database features through a C API.  
+For now, the database can only be controlled using scripts. In the future, a dedicated library named **lib_eskdron** is planned to expose database features.  
 This library will be developed if _eskDron is used in future C projects.
 
 A stable beta release is planned for **07/07/2026**.
