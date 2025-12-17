@@ -1,37 +1,30 @@
-# 🚀 _eskDron - Database Engine
+# _eskDron - Database Engine
 
-> *"Like a Star Wars squadron - efficient, powerful, and mission-ready"*
+## Introduction
 
-## 📖 Introduction
+_eskDron is a lightweight, local database engine written entirely in C for performance.  
+The project is based on a SQL-like query language with low-level execution control in C.
 
-**_eskDron** is a personal project - a lightweight, local database engine written entirely in C. Born from a passion for data structures and algorithms, this project aims to provide a robust foundation for applications requiring efficient data storage and retrieval.
+For now, the database can only be controlled using scripts. In the future, a dedicated library named **lib_eskdron** is planned to expose database features through a C API.  
+This library will be developed if _eskDron is used in future C projects.
 
-Inspired by the elite squadrons of the Star Wars universe, _eskDron is designed to be **fast and usefull** - handling your data with the precision of a well-coordinated fleet.
+A stable beta release is planned for **07/07/2026**.
 
-## ✨ Features
+## Features (overview)
 
-### 🔍 **ESK_QUERY Language**
-- SQL-like query language for intuitive data manipulation
-- Custom syntax designed for performance and simplicity
-- Comprehensive data retrieval and modification capabilities
+- Custom SQL-like query language (ESK_QUERY)
+- Script execution workflow for batch operations
+- Fully written in C
+- Designed for high performance and memory efficiency
+- Modular and extensible architecture
 
-### 📜 **ESK_SCRIPT System**
-- Automated batch processing and data transformations
-- Custom workflow automation
-
-### 🏗️ **Core Architecture**
-- Written in pure C for maximum performance
-- Optimized search and sorting algorithms
-- Efficient memory management
-- Memory-safe operations
-- Modular and extensible design
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- GCC or Clang compiler
-- Make build system
-- Linux/Unix environment (Windows with WSL supported)
+
+- GCC or Clang compiler  
+- Make build system  
+- Linux/Unix environment (Windows WSL supported)  
 
 ### Installation
 
@@ -46,8 +39,8 @@ make
 # Run the database engine
 ./eskdron
 
-# To run the script
+# To run a script (from inside the engine)
 run
 
 # To exit the database
-exit 
+exit
