@@ -1,4 +1,4 @@
-# _eskDron - Database Engine
+# _eskDron - BDD
 
 ## Introduction
 
@@ -36,11 +36,11 @@ cd _eskDron
 # Build the project
 make
 
-# Run the database engine
+# Run the bdd engine
 ./eskdron
 
 # To run a script (from inside the engine)
 run
 
-# To exit the database
+# To exit the bdd engine
 exit
