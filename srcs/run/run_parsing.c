@@ -1,5 +1,29 @@
 #include "eskdron.h"
 
+char *return_s(t_esk_main *eskdron, char *s)
+{
+    char *res;
+    int i = -1;
+    int y = -1;
+    bool backslash = false;
+    int nb_to_malloc = ft_strlen(s);
+    
+    if (!s)
+        return (NULL);
+    while (s[++y])
+        if (s[y] == '\n')
+            backslash = true;
+    if (backslash)
+        nb_to_malloc--;
+    res = malloc((nb_to_malloc) * sizeof(char));
+    if (!res)
+        gc_crush_malloc(eskdron);
+    while (++i < nb_to_malloc)
+        res[i] = s[i];
+    res[i] = '\0';
+    return (res);
+}
+
 // create the tokens (create_tokens() function)
 // the tokens are created non efficentily and needed a big refacto
 // but for the beta it's acceptable
@@ -13,7 +37,7 @@ void run_parsing_query_engine(t_esk_main *eskdron)
     {
         do {
             s1 = get_next_line(eskdron->fd_query_file);
-            s = ft_strtrim(s1, "\n");
+            s = return_s(eskdron, s1);
             free(s1);
             esk_add_back(&eskdron->garb, esk_new_node(s));
             if (s)

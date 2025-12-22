@@ -8,12 +8,10 @@ int dir_exist(char *s)
 
     if (stat(s, &path_stat) != 0)
     {
-        ft_putstr_fd("Directory does not exist\n", 2);
         return (1);
     }
     if (!S_ISDIR(path_stat.st_mode))
     {
-        ft_putstr_fd("Path exists but is not a directory\n", 2);
         return (0);
     }
     return (0);
