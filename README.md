@@ -1,8 +1,8 @@
 # _eskDron - BDD
 
-## Release date
+## Release Date
 For now the project is still in progress...
-Stay tuned, a stable beta version will be released!
+Stay tuned, a stable beta version will be released soon!
 
 ## Introduction
 
