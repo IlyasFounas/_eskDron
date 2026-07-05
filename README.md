@@ -1,5 +1,9 @@
 # _eskDron - BDD
 
+## Release Date
+For now the project is still in progress...
+Stay tuned, a stable beta version will be released soon!
+
 ## Introduction
 
 _eskDron is a lightweight, local database engine written entirely in C for performance.  
@@ -7,8 +11,6 @@ The project is based on a SQL-like query language with low-level execution contr
 
 For now, the database can only be controlled using scripts. In the future, a dedicated library named **lib_eskdron** is planned to expose database features.  
 This library will be developed if _eskDron is used in my future C projects.
-
-A stable beta release is planned for **07/07/2026**.
 
 ## Features (overview)
 
