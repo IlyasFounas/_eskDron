@@ -13,11 +13,12 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 4096
 # endif
 
 # include <stdlib.h>
 # include <unistd.h>
+// # include <stdio.h> //for debug
 
 char	*get_next_line(int fd);
 size_t	ft_strlcpy_g(char *dst, const char *src, size_t size);

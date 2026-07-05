@@ -7,4 +7,15 @@ typedef struct s_main
     char **envpp;
 } t_main;
 
+typedef enum s_create
+{
+    DATABASE,
+    TABLE
+} t_create;
+
+typedef struct s_obj
+{
+    void *smth;
+} t_obj;
+
 #endif

@@ -67,7 +67,11 @@ static char	*ft_readline(int fd, char *buf)
 		buf[read_c] = '\0';
 		line = ft_strjoin_g(line, buf);
 		if (!line)
-			return (free(line), NULL);
+		{
+			if (line)
+				free(line);
+			return (NULL);
+		}
 		if ((line && ft_strrchr_g(line, '\n') == 1))
 			break ;
 	}

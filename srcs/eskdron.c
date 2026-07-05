@@ -37,14 +37,24 @@ void ft_readline(t_main *esk)
     (void)esk;
     while (42)
     {
-        s = get_next_line(fd);
         if (g_sigint)
         {
+            if (s)
+                free(s);
             return ;
         }
+        s = get_next_line(fd);
+        if (!s)
+            return ;
         if (s)
         {
-            printf("%s\n", s);
+            if (ft_strncmp(s, CRT_DB, CRT_DB_NB) == 0)
+            {
+                create(esk, DATABASE, null)
+                printf("processing the script..\n");
+                // printf("%s\n", s);
+            }
+            free(s);
         }
     }
 }
