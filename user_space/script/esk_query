@@ -1,6 +1,0 @@
-/*Define first for better understanding*/
-#define DB test
-
-// ESK_DATABASE_CREATE $DB
-
-ESK_TABLE_CREATE $DB/users

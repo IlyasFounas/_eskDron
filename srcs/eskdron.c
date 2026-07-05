@@ -27,26 +27,25 @@ void set_signals(void)
 // Every new lines call the garbage collector
 // To don't take all the memory, 
 // when the execution finish we free all the memory
-void ft_readline(t_esk_main *eskdron)
+void ft_readline(t_main *esk)
 {    
     int fd;
     char *s;
 
     fd = 1;
     s = NULL;
+    (void)esk;
     while (42)
     {
         s = get_next_line(fd);
         if (g_sigint)
         {
-            g_sigint = 0;
-            free_envp(eskdron->envp);
-            eskdron->envp = NULL;
-            gc_crush_malloc(eskdron);
             return ;
         }
-        if (start_parsing(eskdron, s) == 1)
-            return ;
+        if (s)
+        {
+            printf("%s\n", s);
+        }
     }
 }
 
@@ -54,19 +53,17 @@ int main(int argc, char **argv, char **envp)
 {
     (void)argc;
     (void)argv;
-    t_esk_main eskdron;
 
-    ft_memset(&eskdron, 0, sizeof(t_esk_main));
-    eskdron.envpp = envp;
+    t_main esk;
+    ft_memset(&esk, 0, sizeof(t_main));
+    esk.envpp = envp;
     ft_putstr_fd("\t\tWELCOME TO _eskDron\n\n", 1);
-    ft_putstr_fd("\t\tit's a mini query engine\n", 1);
-    ft_putstr_fd("\t\tpowered by the esk_query_language\n", 1);
+    ft_putstr_fd("\t\tit's a very simple query engine\n", 1);
+    ft_putstr_fd("\t\tpowered by the esk_language\n", 1);
     ft_putstr_fd("\t\tby Ilyas Founas\n", 1);
+    ft_putstr_fd("\t\t(c 2025-2026)\n", 1);
 
     set_signals();
-    ft_readline(&eskdron);
-    free_envp(eskdron.envp);
-    eskdron.envp = NULL;
-    gc_crush_malloc(&eskdron);
+    ft_readline(&esk);
     return (0);
 }

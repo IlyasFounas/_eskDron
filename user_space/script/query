@@ -1,0 +1,35 @@
+#define USR "client_table"
+#define HERE "here"
+
+// skip
+create_db ("eskdron")
+
+create_table (USR) 
+columns (id, "name", HERE, age, "salary")
+type (auto_key, string, string, int, int)
+
+insert_table (USR)
+input ("james", HERE, "47", 174000)
+
+update_table (USR)
+columns (age, salary)
+inputs (42, 174500)
+where (id = 14563, "salary" = 174000)
+
+delete_table (USR)
+
+delete_table (USR)
+where (id = 147)
+
+// unskip
+create_table ("BANK_ACCOUNT") 
+columns (id, USR.id, net_worth)
+type (auto_key, foreign_key, int)
+
+insert_table (USR)
+input (147, 12000000)
+
+select_table (USR)
+auto_join (USR, BANK_ACCOUNT)
+columns (name, age, USR.salary, BANK_ACCOUNT.net_worth)
+where (USR.id = 147) // james 42 174000 1200000
