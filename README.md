@@ -1,48 +1,12 @@
-# _eskDron - BDD
+# _eskDron
 
-## Release Date
-For now the project is still in progress...
-Stay tuned, a stable beta version will be released soon!
+I'm creating a simple database engine written in C, for my own C projects, so I can use it directly to store and manage data.
 
-## Introduction
+This project is a way for me to keep learning algorithms and the complexity of ordering/managing data, as well as optimizing performance.
 
-_eskDron is a lightweight, local database engine written entirely in C for performance.  
-The project is based on a SQL-like query language with low-level execution control in C.
+It's a relational database. Joins are easier to use because the engine implicitly handles them — no more LEFT, INNER, RIGHT, or FULL JOIN needed.
 
-For now, the database can only be controlled using scripts. In the future, a dedicated library named **lib_eskdron** is planned to expose database features.  
-This library will be developed if _eskDron is used in my future C projects.
+I'm building this little engine for fun, but if you see a way to improve it, feel free to open a PR. If you find a bug, I'll be happy to hear about it.
 
-## Features (overview)
-
-- Custom SQL-like query language (ESK_QUERY)
-- Script execution workflow for batch operations
-- Fully written in C
-- Designed for high performance and memory efficiency
-- Modular and extensible architecture
-
-## Getting Started
-
-### Prerequisites
-
-- GCC or Clang compiler  
-- Make build system  
-- Linux/Unix environment (Windows WSL supported)  
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/IlyasFounas/_eskDron.git
-cd _eskDron
-
-# Build the project
-make
-
-# Run the bdd engine
-./eskdron
-
-# To run a script (from inside the engine)
-run
-
-# To exit the bdd engine
-exit
+- **Beta**: 2026/10/12 — basic features
+- **Stable beta**: TBD — basic features + security improvements
