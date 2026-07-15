@@ -24,38 +24,51 @@ void set_signals(void)
     signal(SIGQUIT, SIG_IGN);
 }
 
-// Every new lines call the garbage collector
-// To don't take all the memory, 
-// when the execution finish we free all the memory
 void ft_readline(t_main *esk)
-{    
+{
     int fd;
-    char *s;
+    int err;
+    char *line;
+    char *line_trimed;
+    size_t line_trimed_length;
+    int interface_state;
 
-    fd = 1;
-    s = NULL;
-    (void)esk;
+    fd = 0;
+    err = 0;
+    line = NULL;
+    line_trimed = NULL;
+    line_trimed_length = 0;
+    interface_state = true;
     while (42)
     {
         if (g_sigint)
         {
-            if (s)
-                free(s);
+            if (line)
+                free(line);
             return ;
         }
-        s = get_next_line(fd);
-        if (!s)
+        ft_putstr_fd("_eskDron > ", 0);
+        line = get_next_line(fd);
+        printf("\n");
+        if (!line)
             return ;
-        if (s)
+        if (line)
         {
-            if (ft_strncmp(s, CRT_DB, CRT_DB_NB) == 0)
+            trim_line(line, &line_trimed, &line_trimed_length, &err);
+            if (err == 0)
             {
-                create(esk, DATABASE, null)
-                printf("processing the script..\n");
-                // printf("%s\n", s);
+                interface_state = interface(esk, line_trimed);
+                if (!interface_state)
+                {
+                    free(line);
+                    destroy_malloc(esk);
+                    return ;
+                }
             }
-            free(s);
+            string_to_null(line_trimed, line_trimed_length);
+            free(line);
         }
+        err = 0;
     }
 }
 
@@ -69,7 +82,7 @@ int main(int argc, char **argv, char **envp)
     esk.envpp = envp;
     ft_putstr_fd("\t\tWELCOME TO _eskDron\n\n", 1);
     ft_putstr_fd("\t\tit's a very simple query engine\n", 1);
-    ft_putstr_fd("\t\tpowered by the esk_language\n", 1);
+    ft_putstr_fd("\t\tdrive the database with the terminal\n", 1);
     ft_putstr_fd("\t\tby Ilyas Founas\n", 1);
     ft_putstr_fd("\t\t(c 2025-2026)\n", 1);
 

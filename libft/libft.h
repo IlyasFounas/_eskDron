@@ -57,7 +57,7 @@ char				*ft_strdup(const char *s);
 char				*ft_strndup(const char *s, size_t n);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin_sh(char *s1, char const *s2, int free_s1);
-char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin(char const *s1, char const *s2, int *err);
 char				**ft_split_sh_extra(const char *s, char *se);
 char				**ft_split_sh(char *s, char *se);
 char				**ft_split(char const *s, char c);

@@ -3,7 +3,8 @@
 
 typedef struct s_main
 {
-    void *ptr;
+    char *state;  //say the state of the execution
+    char *database_name;
     char **envpp;
 } t_main;
 
