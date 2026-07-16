@@ -20,16 +20,13 @@ void trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *
             *err = 1;
             return ;
         }
-        printf("ll= %ld\n", line_length + 1);
         *line_trimed_length = line_length;
     }
     ft_strlcpy(*line_trimed, line, line_length);
-    printf("trimed= %s\n", *line_trimed);
 }
 
 void string_to_null(char *s, size_t length)
 {
-    printf("l= %ld\n", length);
     for (size_t i = 0; i < length; i++)
     {
         s[i] = '\0';

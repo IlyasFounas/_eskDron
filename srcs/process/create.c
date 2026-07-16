@@ -10,7 +10,7 @@ static bool c_database(t_main *esk, char *name, char *fname)
     {
         if (!esk->database_name)
         {
-            logger("You should give a name to your database", 1);
+            logger("You should give a name to your database\n", 1);
             return (true);
         }
         else

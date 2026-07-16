@@ -45,13 +45,21 @@ void ft_readline(t_main *esk)
         {
             if (line)
                 free(line);
+            if (line_trimed)
+                free(line_trimed);
+            destroy_malloc(esk);
             return ;
         }
-        ft_putstr_fd("_eskDron > ", 0);
+        if (!esk->add_columns_rdy)
+            ft_putstr_fd("_eskDron > ", 0);
         line = get_next_line(fd);
-        printf("\n");
         if (!line)
+        {
+            destroy_malloc(esk);
+            if (line_trimed)
+                free(line_trimed);
             return ;
+        }
         if (line)
         {
             trim_line(line, &line_trimed, &line_trimed_length, &err);
@@ -62,6 +70,8 @@ void ft_readline(t_main *esk)
                 {
                     free(line);
                     destroy_malloc(esk);
+                    if (line_trimed)
+                        free(line_trimed);
                     return ;
                 }
             }
@@ -79,6 +89,9 @@ int main(int argc, char **argv, char **envp)
 
     t_main esk;
     ft_memset(&esk, 0, sizeof(t_main));
+    ft_memset(&esk.interf, 0, sizeof(t_interface));
+    esk.database_name = NULL;
+    esk.table_name = NULL;
     esk.envpp = envp;
     ft_putstr_fd("\t\tWELCOME TO _eskDron\n\n", 1);
     ft_putstr_fd("\t\tit's a very simple query engine\n", 1);

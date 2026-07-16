@@ -18,7 +18,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include <stdbool.h>
 
 
 // free
@@ -26,8 +25,12 @@ void destroy_malloc(t_main *esk);
 
 // process
 bool interface(t_main *esk, char *line);
+
 bool create(t_main *esk, t_create create, char *name);
+
 void logger(char *s, int fd);
+
+void add_columns(t_main *esk, char **splited_line);
 
 // tools
 void trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *err);
