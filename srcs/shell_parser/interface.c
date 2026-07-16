@@ -75,6 +75,8 @@ static bool interface_add_columns(t_main *esk, bool *state, char **splited_line)
                 *state = false;
                 return (true);
             }
+            if (esk->table_name)
+                free(esk->table_name);
             esk->table_name = ft_strjoin(tmp, splited_line[interf->i + 3], &err);
             if (err == 1)
             {
@@ -82,7 +84,7 @@ static bool interface_add_columns(t_main *esk, bool *state, char **splited_line)
                 return (true);
             }
             esk->add_columns_rdy = true;
-            interf->i++;
+            interf->i += 3;
             free(tmp);
         }
         interf->add_columns = false;
@@ -96,10 +98,12 @@ static bool interface_add_columns(t_main *esk, bool *state, char **splited_line)
  */
 bool interface(t_main *esk, char *line)
 {
+    int err;
     bool use;
     bool state;
     char **splited_line;
 
+    err = 0;
     use = false;
     state = true;
     splited_line = ft_split(line, ' ');
@@ -119,9 +123,25 @@ bool interface(t_main *esk, char *line)
             if (esk->interf.i == 0 && ft_strncmp(splited_line[0], "USE", 3) == 0)
                 use = true;
             else if (esk->interf.i == 1 && use)
-                esk->database_name = ft_strdup(splited_line[1]);
+            {
+                if (esk->database_name)
+                {
+                    free(esk->database_name);
+                    esk->database_name = NULL;
+                }
+                esk->database_name = ft_strjoin("user_space/", splited_line[1], &err);
+                if (err == 1)
+                {
+                    state = false;
+                    break ;
+                }
+            }
             if (esk->add_columns_rdy)
-                add_columns(esk, splited_line);
+            {
+                add_columns(esk, splited_line, &state);
+                if (!state)
+                    break ;
+            }
             if (!interface_add_columns(esk, &state, splited_line))
                 break ;
             interface_creation(esk, &state, splited_line);

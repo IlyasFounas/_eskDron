@@ -30,7 +30,7 @@ bool create(t_main *esk, t_create create, char *name);
 
 void logger(char *s, int fd);
 
-void add_columns(t_main *esk, char **splited_line);
+void add_columns(t_main *esk, char **splited_line, bool *state);
 
 // tools
 void trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *err);

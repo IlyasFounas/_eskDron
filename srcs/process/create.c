@@ -14,7 +14,7 @@ static bool c_database(t_main *esk, char *name, char *fname)
             return (true);
         }
         else
-            fname = ft_strjoin("user_space/", esk->database_name, &err);
+            fname = ft_strdup(esk->database_name);
     }
     else
         fname = ft_strjoin("user_space/", name, &err);
@@ -63,11 +63,8 @@ bool create(t_main *esk, t_create obj, char *name)
             fname = ft_strjoin("user_space/", name, &err);
         else
         {
-            fname = ft_strjoin(esk->database_name, "/", &err);
-            ffname = ft_strjoin(fname, name, &err);
-            if (fname)
-                free(fname);
-            fname = ft_strjoin("user_space/", ffname, &err);
+            ffname = ft_strjoin(esk->database_name, "/", &err);
+            fname = ft_strjoin(ffname, name, &err);
             if (ffname)
                 free(ffname);
         }

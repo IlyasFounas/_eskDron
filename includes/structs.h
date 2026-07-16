@@ -13,7 +13,7 @@ typedef struct s_interface
 
 typedef struct s_main
 {
-    char *state;  //say the state of the execution
+    char *state;  //the state message of the execution
     bool add_columns_rdy;
     char *table_name;
     char *database_name;
