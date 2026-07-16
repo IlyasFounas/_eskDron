@@ -8,5 +8,5 @@ It's a relational database. Joins are easier to use because the engine implicitl
 
 I'm building this little engine for fun, but if you see a way to improve it, feel free to open a PR. If you find a bug, I'll be happy to hear about it.
 
-- **Beta**: 2026/10/12 — basic features
+- **Beta**: 10/12/2026 — basic features
 - **Stable beta**: TBD — basic features + security improvements
