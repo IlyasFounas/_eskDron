@@ -139,6 +139,7 @@ bool interface(t_main *esk, char *line)
             if (esk->add_columns_rdy)
             {
                 add_columns(esk, splited_line, &state);
+                esk->add_columns_rdy = false;
                 if (!state)
                     break ;
             }
@@ -149,6 +150,7 @@ bool interface(t_main *esk, char *line)
                 break ;
             esk->interf.i++;
         }
+        powerful_invoke(esk, splited_line);
         for (int i = 0; splited_line[i]; i++)
             free(splited_line[i]);
         free(splited_line);

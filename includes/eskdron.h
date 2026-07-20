@@ -23,6 +23,10 @@
 // free
 void destroy_malloc(t_main *esk);
 
+// invoke
+void invocation(char *s, int fd, bool print_state);
+void powerful_invoke(t_main *esk, char **splited_line);
+
 // process
 bool interface(t_main *esk, char *line);
 
