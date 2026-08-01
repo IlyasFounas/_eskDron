@@ -32,5 +32,9 @@ typedef struct s_obj
     void *smth;
 } t_obj;
 
+typedef struct s_table_info
+{
+    int columns_nb;
+} t_table_info;
 
 #endif

@@ -19,25 +19,31 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-
+// create
+bool    create(t_main *esk, t_create create, char *name);
 // free
-void destroy_malloc(t_main *esk);
-
+void    destroy_malloc(t_main *esk);
 // invoke
-void invocation(char *s, int fd, bool print_state);
-void powerful_invoke(t_main *esk, char **splited_line);
-
-// process
-bool interface(t_main *esk, char *line);
-
-bool create(t_main *esk, t_create create, char *name);
-
-void logger(char *s, int fd);
-
-void add_columns(t_main *esk, char **splited_line, bool *state);
-
+/**
+ * @brief
+ * this function is the bridge between the shell parser and the processing.
+ * The "processing", mean the writes, the reads, the joins, the actions in the tables
+ * 
+ * return values : 
+ * return -1 if something went wrong in the processing
+ * return 0 if everything is okay.
+ */
+int     powerful_invoke(t_main *esk, char **splited_line);
+// read
+int     info_columns(t_main *esk, t_table_info *t_info);
+// shell_parser
+bool    interface(t_main *esk, char *line);
+// write
+void    add_columns(t_main *esk, char **splited_line, bool *state);
+int     insert(t_main *esk, char **splited_line);
 // tools
-void trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *err);
-void string_to_null(char *s, size_t length);
+void    trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *err);
+void    string_to_null(char *s, size_t length);
+void    logger(char *s, int fd);
 
 #endif

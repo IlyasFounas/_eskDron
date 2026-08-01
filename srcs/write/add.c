@@ -53,16 +53,3 @@ void add_columns(t_main *esk, char **splited_line, bool *state)
     if (first_line)
         free(first_line);
 }
-
-void table_parser()
-{
-    int fd;
-
-    fd = open("eskdron_space/summary_tables", O_APPEND | O_RDWR);
-    if (fd < 0)
-    {
-        logger("table_parser failed, check if esdron_space/summary_table exist\n", 1);
-        return ;
-    }
-    return ;
-}
