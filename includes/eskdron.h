@@ -46,5 +46,6 @@ int     insert(t_main *esk, char **splited_line);
 void    trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *err);
 void    string_to_null(char *s, size_t length);
 void    logger(char *s, int fd);
+char    *trim(char *src, char c, int *trimed_len);
 
 #endif
