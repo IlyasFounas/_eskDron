@@ -1,5 +1,7 @@
 #include "eskdron.h"
 
+
+
 void add_columns(t_main *esk, char **splited_line, bool *state)
 {
     int fd_table_file;

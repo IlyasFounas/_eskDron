@@ -94,11 +94,11 @@ int main(int argc, char **argv, char **envp)
     esk.table_name = NULL;
     esk.envpp = envp;
     ft_putstr_fd("\t\tWELCOME TO _eskDron\n\n", 1);
-    ft_putstr_fd("\t\tit's a very simple query engine\n", 1);
-    ft_putstr_fd("\t\tdrive the database with the terminal\n", 1);
+    ft_putstr_fd("\t\tIt's a very simple query engine\n", 1);
+    ft_putstr_fd("\t\tCheck the documentation.md to know how to use the database.\n", 1);
+    ft_putstr_fd("\t\tThe first stable beta will be released on 2026/12.\n", 1);
     ft_putstr_fd("\t\tby Ilyas Founas\n", 1);
     ft_putstr_fd("\t\t(c 2025-2026)\n", 1);
-
     set_signals();
     ft_readline(&esk);
     return (0);

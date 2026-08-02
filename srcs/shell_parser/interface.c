@@ -150,10 +150,9 @@ bool interface(t_main *esk, char *line)
                 break ;
             esk->interf.i++;
         }
-        powerful_invoke(esk, splited_line);
-        for (int i = 0; splited_line[i]; i++)
-            free(splited_line[i]);
-        free(splited_line);
+        if (state)
+            powerful_invoke(esk, splited_line);
+        destroy_splited_line(splited_line);
     }
     return (state);
 }

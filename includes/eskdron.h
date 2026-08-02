@@ -23,6 +23,7 @@
 bool    create(t_main *esk, t_create create, char *name);
 // free
 void    destroy_malloc(t_main *esk);
+void    destroy_splited_line(char **splited_line);
 // invoke
 /**
  * @brief
