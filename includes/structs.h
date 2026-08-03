@@ -34,7 +34,8 @@ typedef struct s_obj
 
 typedef struct s_table_info
 {
-    int columns_nb;
+    int     columns_nb;
+    char **splited_line;
 } t_table_info;
 
 #endif

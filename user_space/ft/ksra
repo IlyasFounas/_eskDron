@@ -1,1 +1,1 @@
-ID | NAME | PASSWORD 
+ID (pk int) | NAME (string) 

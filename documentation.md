@@ -50,6 +50,6 @@ Then, to add some columns:
 ```
 _eskDron > ADD COLUMNS TO user
 < give the name of the columns >
-ID, NAME, PASSWORD, EMAIL
+ID (pk int), NAME (string), PASSWORD (encoded64 string), EMAIL (unique string)
 eskdron_query_engine: <table user_space/my_project/user successfully updated>
 ```
