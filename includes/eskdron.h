@@ -24,6 +24,7 @@ bool    create(t_main *esk, t_create create, char *name);
 // free
 void    destroy_malloc(t_main *esk);
 void    destroy_splited_line(char **splited_line);
+void    destroy_tab(t_table_info *t_info, char **t, int i);
 // invoke
 /**
  * @brief
@@ -36,7 +37,7 @@ void    destroy_splited_line(char **splited_line);
  */
 int     powerful_invoke(t_main *esk, char **splited_line);
 // read
-int     info_columns(t_main *esk, t_table_info *t_info);
+int     info_columns(t_main *esk, t_table_info *t_info, char **splited_Line);
 // shell_parser
 bool    interface(t_main *esk, char *line);
 // write
@@ -46,6 +47,7 @@ int     insert(t_main *esk, char **splited_line);
 void    trim_line(char *line, char **line_trimed, size_t *line_trimed_length, int *err);
 void    string_to_null(char *s, size_t length);
 void    logger(char *s, int fd);
+char    **ft_realloc_tool(char **t, int nb);
 char    *trim(char *src, char c, int *trimed_len);
 
 #endif
