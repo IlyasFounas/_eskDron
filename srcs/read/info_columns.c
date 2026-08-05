@@ -16,6 +16,8 @@ static void find_tablename(t_main *esk, char **splited_line)
             tmp = ft_strjoin("/", splited_line[i], &err);
             if (!tmp)
                 return;
+            if (esk->table_name)
+                free(esk->table_name);
             esk->table_name = ft_strjoin(esk->database_name, tmp, &err);
             free(tmp);
             return ;

@@ -2,6 +2,8 @@
 
 static void print_tab(char **t)
 {
+    if (!t)
+        return ;
     for (int i = 0; t[i]; i++)
         printf("%s ", t[i]);
     printf("\n");
@@ -22,7 +24,6 @@ int insert(t_main *esk, char **splited_line)
     values = NULL;
     columns = NULL;
     ft_memset(&t_info, sizeof(t_table_info), 0);
-    printf("HERE\n");
     if (info_columns(esk, &t_info, splited_line) == -1)
         return (-1);
     for (int i = 0; splited_line[i]; i++)
@@ -30,6 +31,10 @@ int insert(t_main *esk, char **splited_line)
         if (ft_strncmp(splited_line[i], "as", 2) == 0)
         {
             fill_columns = true;
+        }
+        else if (ft_strncmp(splited_line[i], "into", 4) == 0)
+        {
+            break ;
         }
         else
         {
@@ -61,6 +66,7 @@ int insert(t_main *esk, char **splited_line)
     }
     print_tab(values);
     print_tab(columns);
+    print_tab(t_info.splited_line);
     destroy_tab(&t_info, columns, j);
     destroy_tab(&t_info, values, y);
     destroy_splited_line(t_info.splited_line);
